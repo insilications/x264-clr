@@ -1510,10 +1510,10 @@ elif [ $compiler = CL ]; then
     PROF_USE_CC="-GL"
     PROF_USE_LD="-LTCG:PGOPTIMIZE"
 else
-    PROF_GEN_CC="-fprofile-generate"
-    PROF_GEN_LD="-fprofile-generate"
-    PROF_USE_CC="-fprofile-use"
-    PROF_USE_LD="-fprofile-use"
+    PROF_GEN_CC="-fprofile-generate=/var/tmp/pgo -fprofile-dir=/var/tmp/pgo -fprofile-abs-path -fprofile-update=atomic -fprofile-arcs -ftest-coverage --coverage -fprofile-partial-training"
+    PROF_GEN_LD="-fprofile-generate=/var/tmp/pgo -fprofile-dir=/var/tmp/pgo -fprofile-abs-path -fprofile-update=atomic -fprofile-arcs -ftest-coverage --coverage -fprofile-partial-training"
+    PROF_USE_CC="-fprofile-use=/var/tmp/pgo -fprofile-dir=/var/tmp/pgo -fprofile-abs-path -fprofile-correction -fprofile-partial-training"
+    PROF_USE_LD="-fprofile-use=/var/tmp/pgo -fprofile-dir=/var/tmp/pgo -fprofile-abs-path -fprofile-correction -fprofile-partial-training"
 fi
 
 # generate config files
